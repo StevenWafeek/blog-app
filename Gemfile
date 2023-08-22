@@ -6,7 +6,7 @@ ruby '3.2.2'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.7'
 gem 'rubocop', '>= 1.0', '< 2.0'
-
+gem 'web-console'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -56,6 +56,8 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'enum_help'
+  gem 'rails-controller-testing'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'rspec-support', '3.12.1'
