@@ -10,11 +10,11 @@
             <div class="userName">
           <%= link_to user_path(user), class: 'userNameAnchor' do %>
             <h2><%= user.name %></h2>
-            <h6>Number of posts: <%= user.posts.count %></h6>
+      <h6>Number of posts: <%= user.posts_count %></h6>
           <% end %>
             </div>
       </li>
-      
+
     <% end %>
   </ul>
 </div>

@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
+  before_action :set_user
+
   def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.includes(:comments, :likes)
   end
 
   def show
     @user = User.find(params[:user_id])
-    @post = @user.posts.find(params[:id])
+    @post = @user.posts.includes(:comments, :likes).find(params[:id])
     @comments = @post.comments
   end
 
@@ -27,6 +28,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :body)
