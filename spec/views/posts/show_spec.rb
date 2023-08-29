@@ -12,11 +12,11 @@ RSpec.describe 'Post #Show Page', type: :feature do
   end
 
   let!(:comment1) do
-    Comment.create(post: post, author: user, text: 'test comment 1')
+    Comment.create(post:, author: user, text: 'test comment 1')
   end
-  
+
   let!(:comment2) do
-    Comment.create(post: post, author: user, text: 'test comment 2')
+    Comment.create(post:, author: user, text: 'test comment 2')
   end
 
   before(:each) do
