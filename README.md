@@ -106,6 +106,11 @@ cd 'project name'
 - LinkedIn: [steven wafeek
   ](https://www.linkedin.com/in/steven-wafeek-b629341b6/)
 
+🧑‍🦲 **Romans Š.**
+
+- GitHub: [@romans-adi](https://github.com/romans-adi/)
+- LinkedIn: [Romans Špiļaks](https://www.linkedin.com/in/obj513/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
