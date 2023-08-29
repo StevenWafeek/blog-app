@@ -6,37 +6,38 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-users = []
-30.times do |i|
-  users << User.create(
-    name: "User #{i + 1}",
-    photo: "https://unsplash.com/photos/abcdef",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    posts_counter: rand(1..10)
-  )
-end
+User.destroy_all
+Post.destroy_all
+Comment.destroy_all
 
-users.each do |user|
-  user.posts_counter.times do |i|
-    Post.create(
-      author_id: user.id,
-      title: "Hello Post #{i + 1} by #{user.name}",
-      text: "Hi",
-      comments_counter: 0,
-      likes_counter: 0
+User.transaction do
+  Comment.destroy_all
+
+  30.times do
+    user = User.create(
+      name: Faker::Name.name,
+      photo: "https://unsplash.com/photos/abcdef",
+      bio: Faker::Quote.most_interesting_man_in_the_world,
+      posts_counter: rand(1..40)
     )
-  end
-end
 
-User.all.each do |user|
-  user.posts.each do |post|
-    rand(0..5).times do
-      post.comments.create(
-        text: Faker::Lorem.sentence,
-        author: User.all.sample
+    user.posts_counter.times do
+      post = Post.create(
+        author: user,
+        title: Faker::Book.title,
+        text: Faker::Quote.famous_last_words,
+        comments_counter: 0,
+        likes_counter: 0
       )
-    end
 
-    post.update(likes_counter: rand(0..20))
+      rand(0..5).times do
+        post.comments.create(
+          text: Faker::Lorem.sentence,
+          author: User.all.sample
+        )
+      end
+
+      post.update(likes_counter: rand(0..100))
+    end
   end
 end

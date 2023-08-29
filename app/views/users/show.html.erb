@@ -1,5 +1,4 @@
 <div class="wrapper">
-
   <div class="userNameWrapper">
     <div><img alt="Profile P."/></div>
     <div class="userName">
@@ -14,24 +13,23 @@
   </div>
 
   <% @user.recent_posts.each_with_index do |post, index| %>
-    <ul class="post" style="<%= index >= 3 ? 'display:none' : '' %>">
-      <%= link_to user_post_path(@user, post), class: 'user-link' do %>
-        <h3>Post #<%= index + 1 %></h3>
-        <% words = post.text.split %>
-        <% if words.length <= 18 %>
-          <p><%= post.text %></p>
-        <% else %>
-          <p><%= words.take(18).join(' ') %>...</p>
-        <% end %>
-        <div class="count">
-          Comments: <%= post.comments.count %> &nbsp;&nbsp;
-          Likes: <%= post.likes.count %>
-        </div>
+    <div class="post" style="<%= index >= 3 ? 'display:none' : '' %>">
+      <h3><%= link_to "Post ##{index + 1}", user_post_path(@user, post), class: 'user-link' %></h3>
+      <% words = post.text.split %>
+      <% if words.length <= 18 %>
+        <p><%= post.text %></p>
+      <% else %>
+        <p><%= words.take(18).join(' ') %>...</p>
       <% end %>
-    </ul>
-    
-  <% end %>
-    <div class="button">
-        <%= link_to 'See all posts', user_posts_path(@user), id: 'all-posts-link' %>
+      <div class="count">
+        Comments: <%= post.comments.count %> &nbsp;&nbsp;
+        Likes: <%= post.likes.count %>
+      </div>
     </div>
+  <% end %>
+
+  <div class="button">
+    <%= link_to 'See all posts', user_posts_path(@user), id: 'all-posts-link' %>
+  </div>
 </div>
+
