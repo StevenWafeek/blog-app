@@ -9,6 +9,7 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
+gem 'faker', '~> 3.2'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
 
@@ -50,6 +51,8 @@ gem 'bootsnap', require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'capybara'
+
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'enum_help'
   gem 'rails-controller-testing'
@@ -71,7 +74,7 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
+  # gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
