@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     root to: 'devise/sessions#new', as: :login
     get 'sign_in', to: 'devise/sessions#new'
-    get 'password', to: 'devise/passwords#new'
+    get 'secret', to: 'devise/passwords#new'
     get 'unlock', to: 'devise/unlocks#new'
     get 'verification', to: 'devise/confirmations#new'
     get 'signup', to: 'devise/registrations#new'

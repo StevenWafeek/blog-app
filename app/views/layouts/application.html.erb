@@ -14,14 +14,10 @@
 
 <% if current_user %>
   <%= link_to "New Post", new_user_post_path(current_user) %>
-  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
 <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <a href="<%= destroy_user_session_path %>">Sign out</a>
-    <%= link_to "Sign out 2", destroy_user_session_path, method: :delete %>
-  </header>
+  
 
   <body>
       <p class="notice"><%= notice %></p>
