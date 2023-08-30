@@ -1,10 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { passwords: 'devise/passwords' }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users, path: '', path_names: {
+    sign_in: 'login',
+    sign_out: 'logout',
+    sign_up: 'signup',
+    password: 'secret',
+    confirmation: 'verification',
+    unlock: 'unblock'
+  }
 
-  # Defines the root path route ("/")
-  # root "articles#index"
-    # root to: 'home#index'
+  devise_scope :user do
+    root to: 'devise/sessions#new', as: :login
+    get 'sign_in', to: 'devise/sessions#new'
+    get 'password', to: 'devise/passwords#new'
+    get 'unlock', to: 'devise/unlocks#new'
+    get 'verification', to: 'devise/confirmations#new'
+    get 'signup', to: 'devise/registrations#new'
+  end
+
   root 'users#index'
   resources :users, only: %i[index show] do
     resources :posts, only: %i[index show new create] do
@@ -12,7 +24,4 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
     end
   end
-
-  
-  get '/sign_out_user', to: 'users#sign_out_user', as: 'sign_out_user'
 end

@@ -12,10 +12,10 @@
 
   <header>
 
-  <% if current_user %>
-      <%= link_to "New Post", new_user_post_path(current_user) %>
-      <%= link_to "Sign out", sign_out_user_path, method: :get %>
-    <% end %>
+<% if current_user %>
+  <%= link_to "New Post", new_user_post_path(current_user) %>
+  <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+<% end %>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -24,6 +24,8 @@
   </header>
 
   <body>
+      <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>
