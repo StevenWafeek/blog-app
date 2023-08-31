@@ -180,16 +180,16 @@ form {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  width: 505px;
 }
 
 .actions input[type="submit"] {
-  background-color: #4caf50;
-  color: white;
   font-size: 16px;
   padding: 10px 20px;
-  border: none;
   border-radius: 4px;
   cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .actions input[type="submit"]:hover {
