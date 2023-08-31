@@ -4,8 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :rememberable, :validatable, :confirmable, :recoverable
 
-
-
   # has_one_attached :photo
   has_many :likes, foreign_key: 'author_id'
   has_many :posts, foreign_key: 'author_id'
